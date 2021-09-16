@@ -14,7 +14,7 @@ const ParentContainer = styled.div`
 
 const MainContainer = () => {
 
-    const [formTrigger, setFormTrigger] = useState(false);
+    const [formTrigger, setFormTrigger] = useState(true);
 
     const formOn = () => setFormTrigger(true);
     const formOff = () => setFormTrigger(false);
