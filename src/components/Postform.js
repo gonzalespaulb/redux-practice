@@ -70,15 +70,14 @@ const PostForm = ({ formOff }) => {
             <SubmissionForm onClick={(e) => e.stopPropagation()}>
 
                 <InputContainer1>
-
                     <FormLabel>Blurb Title</FormLabel>
 
                     <FormInput
                         onChange={(e) => setBlurbTitle(e.target.value)}
                     >
                     </FormInput>
-
                 </InputContainer1>
+
                 <InputContainer2>
                     <FormLabel>Blurb Content</FormLabel>
                     <FormInput
@@ -86,6 +85,7 @@ const PostForm = ({ formOff }) => {
                     >
                     </FormInput>
                 </InputContainer2>
+                
                 <SubmitBtn
                     onClick={() => setSubmitThis({title: blurbTitle, body: blurbContent})}
                 >

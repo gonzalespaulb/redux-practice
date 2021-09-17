@@ -14,7 +14,7 @@ const ParentContainer = styled.div`
 
 const MainContainer = () => {
 
-    const [formTrigger, setFormTrigger] = useState(true);
+    const [formTrigger, setFormTrigger] = useState(false);
 
     const formOn = () => setFormTrigger(true);
     const formOff = () => setFormTrigger(false);
@@ -27,8 +27,12 @@ const MainContainer = () => {
 
     return (
         <ParentContainer>
-            <Navbar formOn={formOn}></Navbar>
+            <Navbar 
+                formOn={formOn}>
+            </Navbar>
+
             <Post></Post>
+
             {showForm()}
         </ParentContainer>
     )

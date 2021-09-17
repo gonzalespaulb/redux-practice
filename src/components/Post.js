@@ -1,5 +1,7 @@
-import react, {useEffect, useState} from 'react';
+import react, { useEffect, useState } from 'react';
 import styled from "styled-components";
+import { connect } from 'react-redux';
+import { fetchPosts } from '../actions-old/postActions';
 
 const IndividualPost = styled.div`
   width: 60%;
@@ -14,39 +16,34 @@ const PostContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-`
+`;
 
-const Post = () => {
-  const [post, setPost] = useState([]);
+const mapStateToProps = (state) => {
+  return state.posts;
+}
 
-  const fetchAPI = async () => {
-    const fetchedAPI = await fetch("https://jsonplaceholder.typicode.com/posts")
-      .then((response) => response.json())
-      .then((json) => json);
+const Post = (props) => {
 
-    return fetchedAPI;
-  };
-
-  const getFetchedData = async () => {
-    const fetchedData = await fetchAPI();
-    setPost(fetchedData);
-  };
+  console.log(props);
 
   useEffect(() => {
-    getFetchedData();
-  });
+    props.fetchPosts()
+  },[])
 
   const mappedData = () => {
-    const posts = post.map((data, index) => {
-      return (
-        <IndividualPost key={index}>
-          <h3>{data.title}</h3>
-          <p>{data.body}</p>
-        </IndividualPost>
-      )
-    })
+    
+    if(props?.posts.length) {
+      return props.posts.map((data, index) => {
+        return (
+          <IndividualPost key={index}>
+            <h3>{data.title}</h3>
+            <p>{data.body}</p>
+          </IndividualPost>
+        )
+      })
+    } else {return null}
 
-    return posts;
+
   }
 
   return (
@@ -56,4 +53,4 @@ const Post = () => {
   );
 };
 
-export default Post;
+export default connect(mapStateToProps, { fetchPosts })(Post);
