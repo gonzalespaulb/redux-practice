@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import { connect } from 'react-redux';
+import { createNewPost } from '../actions-old/postActions';
 
 const SubmissionContainer = styled.div`
     width: 100vw;
@@ -55,18 +57,30 @@ const SubmitBtn = styled.button`
     padding: 8px 16px 8px 16px;
     border-radius: 15px;
     cursor: pointer;
-`
+`;
 
-const PostForm = ({ formOff }) => {
+const mapStateToProps = (state) => {
+    return state.posts;
+  }
+
+const PostForm = (props) => {
 
     const [blurbTitle, setBlurbTitle] = useState(``);
     const [blurbContent, setBlurbContent] = useState(``);
     const [submitThis, setSubmitThis] = useState(``);
 
-    console.log(submitThis);
+    const finalSubmission = () => {
+        setSubmitThis({title: blurbTitle, body: blurbContent})
+    }
+
+    console.log(props);
+
+    useEffect(() => {
+        finalSubmission();
+    }, [blurbTitle, blurbContent])
 
     return (
-        <SubmissionContainer onClick={formOff}>
+        <SubmissionContainer onClick={props.formOff}>
             <SubmissionForm onClick={(e) => e.stopPropagation()}>
 
                 <InputContainer1>
@@ -87,7 +101,9 @@ const PostForm = ({ formOff }) => {
                 </InputContainer2>
                 
                 <SubmitBtn
-                    onClick={() => setSubmitThis({title: blurbTitle, body: blurbContent})}
+                    onClick={() => {
+                        props.createNewPost(submitThis);
+                    }}
                 >
                     Post Blurb
                 </SubmitBtn>
@@ -97,4 +113,4 @@ const PostForm = ({ formOff }) => {
     )
 }
 
-export default PostForm;
+export default connect(mapStateToProps, { createNewPost })(PostForm);

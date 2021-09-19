@@ -6,11 +6,21 @@ export const fetchPosts = () => dispatch => {
         .then((json) => dispatch(finishFetchPosts(json)));
 }
 
-const finishFetchPosts = (posts) => {
+export const createNewPost = (newPost) => dispatch => {
+    dispatch(addNewPost(newPost))
+}
 
+const finishFetchPosts = (posts) => {
 
     return {
         type: FETCH_POSTS,
         payload: posts,
+    }
+}
+
+const addNewPost = (newPost) => {
+    return {
+        type: NEW_POST,
+        payload: newPost,
     }
 }

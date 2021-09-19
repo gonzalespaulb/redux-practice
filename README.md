@@ -7,7 +7,7 @@ complexity rises exponentially. To solve this problem, a global state (Redux) ca
 without passing down props. This in turn allows for easier maintenance and addition of new features. 
 
 ## Store 
-The "store" acts as a global state of the application. 
+Store will hold your global state. This is the state that your actions and reducers will refer to. 
 
 ## Action
 "Action" is in its simplest term is a function that returns an object.
@@ -17,37 +17,7 @@ The "store" acts as a global state of the application.
 
 ## Dispatch
 
-## Boiler Plate - Steps to setting up old skool Redux
+## Connect
 
-1. import { createStore } from 'redux';
 
-2. Create an action. 
-The property "type" can also be called "name". But basically is just what your action is called. 
-```
-    const finishFetchPosts = (posts) => {
-        return {
-            type: FETCH_POSTS,
-            payload: posts,
-        }
-    }
-```
 
-3. Set up a reducer
-```
-    const initialState = {
-        posts: [],
-    }
-    
-    export default function(state = initialState, action) {
-    switch(action.type) {
-        case FETCH_POSTS:
-
-            return {
-                ...state, 
-                posts: action.payload,
-            }
-        default: 
-            return state;
-    }
-}
-```
