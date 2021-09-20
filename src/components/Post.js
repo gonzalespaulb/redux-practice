@@ -1,22 +1,7 @@
-import react, { useEffect, useState } from 'react';
-import styled from "styled-components";
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { fetchPosts } from '../actions-old/postActions';
-
-const IndividualPost = styled.div`
-  width: 60%;
-  background-color: #f0f0f0;
-  text-align: start;
-  margin-bottom: 10px;
-  padding: 10px;
-`;
-
-const PostContainer = styled.div`
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-`;
+import { IndividualPost, PostContainer } from '../styling/post';
 
 const mapStateToProps = (state) => {
   return state.posts;
