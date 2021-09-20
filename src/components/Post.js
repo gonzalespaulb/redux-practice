@@ -24,15 +24,14 @@ const mapStateToProps = (state) => {
 
 const Post = (props) => {
 
-  console.log(props);
-
   useEffect(() => {
-    props.fetchPosts()
+    props.fetchPosts();
   },[])
+
 
   const mappedData = () => {
     
-    if(props?.posts.length) {
+    if(props.posts.length) {
       return props.posts.map((data, index) => {
         return (
           <IndividualPost key={index}>
