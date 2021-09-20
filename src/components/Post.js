@@ -23,16 +23,17 @@ const mapStateToProps = (state) => {
 }
 
 const Post = (props) => {
-
+ 
   useEffect(() => {
     props.fetchPosts();
   },[])
 
+  const clonedPosts = props.posts.slice().reverse();
 
   const mappedData = () => {
     
-    if(props.posts.length) {
-      return props.posts.map((data, index) => {
+    if(clonedPosts.length) {
+      return clonedPosts.map((data, index) => {
         return (
           <IndividualPost key={index}>
             <h3>{data.title}</h3>
