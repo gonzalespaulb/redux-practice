@@ -20,8 +20,8 @@ const PostForm = (props) => {
   const [blurbContent, setBlurbContent] = useState(``);
 
   const finalSubmission = () => {
-    props.createNewPost({ title: blurbTitle, body: blurbContent });
-    clearInputField();
+        props.createNewPost({ title: blurbTitle, body: blurbContent });
+        clearInputField();
   };
 
   const clearInputField = () => {
