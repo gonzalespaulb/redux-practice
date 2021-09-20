@@ -8,8 +8,6 @@ const mapStateToProps = (state) => {
 
 const LoginInput = (props) => {
 
-    console.log(props);
-
     return (
         <LoginHolder>
             <Login>
