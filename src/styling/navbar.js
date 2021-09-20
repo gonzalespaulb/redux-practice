@@ -20,3 +20,13 @@ export const CreatePostBtn = styled.button`
     border-radius: 15px;
     cursor: pointer;
 `;
+
+export const LogOutBtn = styled.button`
+    padding: 8px 16px 8px 16px;
+    background-color: transparent;
+    color: #f0f0f0;
+    border: 1px solid #f0f0f0;
+    margin-right: 10px;
+    border-radius: 15px;
+    cursor: pointer;
+`;

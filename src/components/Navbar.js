@@ -1,11 +1,18 @@
-import { NavigationContainer, CreatePostBtn } from "../styling/navbar";
+import { connect } from 'react-redux';
+import { logOut } from '../actions-old/isLoggedActions';
+import { NavigationContainer, CreatePostBtn, LogOutBtn } from "../styling/navbar";
 
-const Navbar = ({ formOn }) => {
+const mapStateToProps = (state) => {
+    return state.loggedInStatus;
+}
+
+const Navbar = (props) => {
     return (
         <NavigationContainer>
-            <CreatePostBtn onClick={formOn}>New Post</CreatePostBtn>
+            <LogOutBtn onClick={() => props.logOut(false)}>Log Out</LogOutBtn>
+            <CreatePostBtn onClick={props.formOn}>New Post</CreatePostBtn>
         </NavigationContainer>
     )
 }
 
-export default Navbar;
+export default connect(mapStateToProps, { logOut })(Navbar);

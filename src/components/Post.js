@@ -27,8 +27,6 @@ const Post = (props) => {
         )
       })
     } else {return null}
-
-
   }
 
   return (
