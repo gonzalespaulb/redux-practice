@@ -11,7 +11,7 @@ const Post = (props) => {
  
   useEffect(() => {
     props.fetchPosts();
-  },[props])
+  }, [])
 
   const clonedPosts = props.posts.slice().reverse();
 
