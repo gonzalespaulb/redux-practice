@@ -3,7 +3,7 @@ import { LOG_IN, LOG_OUT } from "../actions-old/types";
 const initialState = {
     loggedInStatus: false,
 }
-
+ 
 const isLoggedReducer = (state = initialState, action) => {
     switch(action.type) {
         case LOG_IN:

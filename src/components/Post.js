@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { fetchPosts } from '../actions-old/postActions';
 import { IndividualPost, PostContainer } from '../styling/post';
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state) => { 
   return state.posts;
 }
 
