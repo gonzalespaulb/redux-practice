@@ -26,8 +26,8 @@ Connect is the "glue" that holds redux magic together. Heres a simple syntax exa
 app. `export default connect(mapStateToProps, { fetchPosts })(Post);`. The syntax I used is as follows `connect(global state, { functions used})(component name)`.
 
 ## mapStateToProps 
-Use this to access the global state. Make sure to add it outside of the component and DO NOT try to to mutate without using a 
-reducer. 
+Make sure to add it outside of the component and DO NOT try to to mutate without using a 
+reducer. In this project there are two different states that I implemented, one will be `isLogged` and `posts`.
 ``` 
     const mapStateToProps = (state) => { 
         return state.posts;
