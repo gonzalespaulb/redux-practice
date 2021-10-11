@@ -6,13 +6,16 @@ import LoginInput from "./components/LoginInput";
 import { connect } from 'react-redux';
 import { logIn } from './actions-old/isLoggedActions';
 import { ParentContainer } from "./styling/mainContainer";
+import { useSelector } from "react-redux";
 
 
-const mapStateToProps = (state) => {
-    return state.loggedInStatus;
-}
+// const mapStateToProps = (state) => {
+//     return state.loggedInStatus;
+// }
 
 const MainContainer = (props) => {
+
+    const loginStatus = useSelector(state => state.login.isLoggedIn);
 
     const [formTrigger, setFormTrigger] = useState(false);
 
@@ -43,11 +46,13 @@ const MainContainer = (props) => {
 
     return (
         <ParentContainer>
-            {props.loggedInStatus ? null : showLoginForm()}
-            {props.loggedInStatus ? showContent() : null}
+            {/* {props.loggedInStatus ? null : showLoginForm()} */}
+            {loginStatus ? null : showLoginForm()}
+            {/* {props.loggedInStatus ? showContent() : null} */}
+            {loginStatus ? showContent() : null}
         </ParentContainer>
     )
 }
 
-// export default MainContainer;
-export default connect(mapStateToProps, { logIn })(MainContainer);
+// export default connect(mapStateToProps, { logIn })(MainContainer);
+export default MainContainer;

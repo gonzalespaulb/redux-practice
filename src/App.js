@@ -1,5 +1,6 @@
 import { Provider } from 'react-redux';
-import store from './store-old';
+// import store from './store-old';
+import store from './redux/store';
 import MainContainer from './MainContainer';
 
 
