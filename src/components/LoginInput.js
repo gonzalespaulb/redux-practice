@@ -1,15 +1,18 @@
 import React, {useState, useEffect} from 'react';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 // import { logIn } from '../actions-old/isLoggedActions';
 import { logIn } from '../redux/loginReducer';
 import {LoginHolder, Login, UsernameContainer, PasswordContainer, UsernameField, PasswordField, InputLabel, LoginBtn} from '../styling/loginInput';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { getPosts } from '../redux/postReducer';
 
 // const mapStateToProps = (state) => {
 //     return state.loggedInStatus;
 // }
 
 const LoginInput = (props) => {
+
+    const loginStatus = useSelector(state => state.login.isLoggedIn);
 
     const dispatch = useDispatch();
 

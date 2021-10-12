@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "./components/Navbar";
 import Post from "./components/Post";
 import PostForm from "./components/Postform";
 import LoginInput from "./components/LoginInput";
-import { connect } from 'react-redux';
-import { logIn } from './actions-old/isLoggedActions';
+// import { connect } from 'react-redux';
+// import { logIn } from './actions-old/isLoggedActions';
 import { ParentContainer } from "./styling/mainContainer";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { getPosts } from "./redux/postReducer";
 
 
 // const mapStateToProps = (state) => {
@@ -17,8 +18,15 @@ const MainContainer = (props) => {
 
     const loginStatus = useSelector(state => state.login.isLoggedIn);
 
-    const [formTrigger, setFormTrigger] = useState(false);
+    const dispatch = useDispatch();
 
+    useEffect(() => {
+        dispatch(getPosts());
+    }, [])
+
+// ......................................................................FORM COMPONENT
+
+    const [formTrigger, setFormTrigger] = useState(false);
     const formOn = () => setFormTrigger(true);
     const formOff = () => setFormTrigger(false);
 
@@ -28,15 +36,13 @@ const MainContainer = (props) => {
         } else return;
     };
 
+// ......................................................................FORM COMPONENT
+
     const showContent = () => {
         return (
             <>
-                <Navbar 
-                    formOn={formOn}>
-                </Navbar>
-
+                <Navbar formOn={formOn}></Navbar>
                 <Post></Post>
-
                 {showForm()}
             </>
         )

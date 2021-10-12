@@ -1,19 +1,22 @@
-import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
-import { fetchPosts } from '../actions-old/postActions';
+import React from 'react';
+// import { connect } from 'react-redux';
+// import { fetchPosts } from '../actions-old/postActions';
 import { IndividualPost, PostContainer } from '../styling/post';
+import { useSelector } from 'react-redux';
 
-const mapStateToProps = (state) => { 
-  return state.posts;
-}
+// const mapStateToProps = (state) => { 
+//   return state.posts;
+// }
 
 const Post = (props) => {
- 
-  useEffect(() => {
-    props.fetchPosts();
-  }, [])
 
-  const clonedPosts = props.posts.slice().reverse();
+  const fetchedPosts = useSelector((state) => state.posts.list);
+ 
+  // useEffect(() => {
+  //   props.fetchPosts();
+  // }, [])
+
+  const clonedPosts = fetchedPosts.slice().reverse();
 
   const mappedData = () => {
     
@@ -36,4 +39,5 @@ const Post = (props) => {
   );
 };
 
-export default connect(mapStateToProps, { fetchPosts })(Post);
+// export default connect(mapStateToProps, { fetchPosts })(Post);
+export default Post;
